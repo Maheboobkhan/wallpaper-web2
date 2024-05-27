@@ -1,22 +1,35 @@
 // CartItemPage.js
-'use client';
-import { useEffect, useState } from 'react';
-import { useCart } from '../../components/CartContext';
-import CartItem from '../../components/CartItem';
+"use client";
+import { useEffect, useState } from "react";
+import { useCart } from "../../components/CartContext";
+import CartItem from "../../components/CartItem";
 
 const CartItemPage = () => {
-//   const { cart, removeFromCart } = useCart();
-const [cart, setCart] = useState([]); 
-  const loc = () => {
-    const local = localStorage.getItem('productToAdd');
-  const obj = JSON.parse(local);
-  setCart([...cart, obj]);
-    console.log(typeof obj);
-  }
+  const { cart, setCart, removeFromCart } = useCart();
+  // const [cart, setCart] = useState([]);
+  const loadCartFromLocalStorage = () => {
+    const localCart = localStorage.getItem("cart");
+    if (localCart) {
+      try {
+        const parsedCart = JSON.parse(localCart);
+        // Ensure parsedCart is an array
+        if (Array.isArray(parsedCart)) {
+          setCart(parsedCart);
+        } else {
+          console.error("Parsed cart is not an array");
+        }
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    } else {
+      console.log("No data found in local storage under key 'cart'");
+    }
+  };
 
-  useEffect(()=>{
-    loc();
-  },[])
+  useEffect(() => {
+    loadCartFromLocalStorage();
+  }, []);
+
   const handleIncrement = (productId) => {
     // Handle increment logic here
   };
@@ -24,7 +37,7 @@ const [cart, setCart] = useState([]);
   const handleDecrement = (productId) => {
     // Handle decrement logic here
   };
-
+  console.log("length" + cart.length);
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-4">Cart Items</h1>
@@ -34,11 +47,11 @@ const [cart, setCart] = useState([]);
         <div>
           {cart.map((item) => (
             <CartItem
-              key={item.id}
+              key={item?.id}
               item={item}
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
-            //   onRemove={removeFromCart}
+              //   onRemove={removeFromCart}
             />
           ))}
         </div>
