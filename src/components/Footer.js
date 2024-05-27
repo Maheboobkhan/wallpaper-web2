@@ -43,7 +43,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-100 py-10">
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-4">
         <div className="text-center mb-8">
           <div className="flex justify-center">
             <a href="#" className="mx-2 text-gray-600 hover:text-gray-900">
@@ -63,7 +63,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between text-left mb-8">
+        <div className="flex flex-wrap justify-between mb-8">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <h4 className="font-bold mb-2">Maheboob Wallpapers</h4>
             <ul>
@@ -138,9 +138,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h4 className="font-bold mt-4 mb-2">Services : </h4>
+            <h4 className="font-bold mb-2">Services : </h4>
             <div className="flex flex-wrap">
-              <ul className="w-1/2">
+              <ul>
                 <li>
                   <a href="#" className="text-gray-600 hover:text-gray-900">
                     Measurement Services
@@ -166,8 +166,6 @@ const Footer = () => {
                     Sample Delivery
                   </a>
                 </li>
-              </ul>
-              <ul className="w-1/2">
                 <li>
                   <a href="#" className="text-gray-600 hover:text-gray-900">
                     Maintenance Services
@@ -183,7 +181,7 @@ const Footer = () => {
           </div>
 
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h4 className="font-bold mt-4 mb-2">Service Areas</h4>
+            <h4 className="font-bold mb-2">Service Areas</h4>
             <div className="flex">
               <ul className="w-1/2">
                 {puneLocalities.slice(0, 15).map((locality, index) => (
