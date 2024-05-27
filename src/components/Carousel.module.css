@@ -1,0 +1,37 @@
+.slideshow-background{
+  background: url('https://cdn.pixabay.com/photo/2018/08/12/15/29/hintersee-3601004_1280.jpg');
+}
+
+.shadow-custom {
+  /* box-shadow: -10px 0 20px rgba(0, 0, 0, 0.7), 100px 0 50px rgba(0, 0, 0, 0.7); */
+  box-shadow: 3px 0px 25px 22px rgba(0,0,0,0.2);
+}
+
+/* Additional styles if needed */
+
+
+
+
+/* Add this to your global stylesheet or a CSS module */
+.relative {
+  position: relative;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.relative:hover .zoomed {
+  cursor: zoom-in;
+  background-size: 500%; /* More zoom */
+  /* transition: 15s all; */
+}
+
+.relative:hover .zoomed:hover {
+  cursor: zoom-out;
+  background-position: center;
+}
