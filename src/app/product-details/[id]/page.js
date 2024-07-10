@@ -327,7 +327,7 @@ const ProductDetails = ({ params }) => {
         <meta property="og:title" content={product.title} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={mainImage} />
-        <meta property="og:url" content={`https://your-domain.com/product-details/${id}`} />
+        <meta property="og:url" content={`https://wallpaper-web2.vercel.app/product-details/${id}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={product.title} />
         <meta name="twitter:description" content={product.description} />
