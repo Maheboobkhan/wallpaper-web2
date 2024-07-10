@@ -240,37 +240,14 @@
 // export default ProductDetails;
 
 "use client";
+import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import books from "../../../data/books";
-import { useCart } from "../../../components/CartContext";
+import books from "../../../data/books"; // Adjust the path based on your project structure
+import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
-
-  const handleAddToCart = () => {
-    const productToAdd = {
-      id: product.id,
-      title: product.title,
-      description: product.description,
-      image: mainImage,
-      // Add any other necessary fields
-    };
-
-    // Retrieve the existing cart from local storage
-    let existingCart = JSON.parse(localStorage.getItem("cart"));
-
-    // If existingCart is not an array (e.g., it's null), initialize it as an empty array
-    if (!Array.isArray(existingCart)) {
-      existingCart = [];
-    }
-
-    // Add the new product to the existing cart array
-    existingCart.push(productToAdd);
-
-    // Store the updated cart array back into local storage
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-  };
   const searchParams = useSearchParams();
   const search = searchParams.get("sampleId");
   const router = useRouter();
@@ -291,9 +268,7 @@ const ProductDetails = ({ params }) => {
 
   useEffect(() => {
     if (product) {
-      // const initialSampleId = query.sampleId || product.samples[0].id;
       const initialSampleId = search || product.samples[0].id;
-      console.log("id " + initialSampleId);
       setMainImage(
         product.samples.find((sample) => sample.id === initialSampleId).image
       );
@@ -339,8 +314,26 @@ const ProductDetails = ({ params }) => {
     });
   };
 
+  const handleOrderViaWhatsApp = () => {
+    const message = `*Product Title:* ${product.title}\n*Description:* ${product.description}\n*Images:*\n${product.samples.map(sample => sample.image).join('\n')}`;
+    const whatsappUrl = `https://wa.me/9921079337?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <Head>
+        <title>{product.title}</title>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={mainImage} />
+        <meta property="og:url" content={`http://localhost:3000/product-details/${id}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={product.title} />
+        <meta name="twitter:description" content={product.description} />
+        <meta name="twitter:image" content={mainImage} />
+      </Head>
       <div className="lg:flex">
         <div className="lg:w-1/2">
           <div
@@ -368,61 +361,44 @@ const ProductDetails = ({ params }) => {
         <div className="lg:w-1/2 lg:pl-8">
           <h1 className="text-2xl font-bold">{product.title}</h1>
           <p className="text-gray-600">{product.description}</p>
-          <form className="mt-4 space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                First Name
-              </label>
-              <input
-                type="text"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Last Name
-              </label>
-              <input
-                type="text"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="email"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Enquire Now
-              </button>
-              <button
-                type="button"
-                onClick={handleAddToCart}
-                className="w-full bg-gray-800 text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </form>
+          <button
+            className="bg-orange-400 text-white px-4 py-2 rounded-md mt-4"
+            onClick={handleOrderViaWhatsApp}
+          >
+            Order Via WhatsApp
+          </button>
         </div>
       </div>
+      <form className="mt-4 space-y-4 w-[35vw] border px-5 py-5 bg-orange-400">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Name
+          </label>
+          <input
+            placeholder="Enter your name"
+            type="text"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <input
+            placeholder="Enter your phone number"
+            type="tel"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div className="w-fit mx-auto">
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Enquire Now
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
