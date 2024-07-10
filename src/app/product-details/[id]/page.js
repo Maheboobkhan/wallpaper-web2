@@ -239,17 +239,16 @@
 
 // export default ProductDetails;
 
-"use client";
+'use client';
 import Head from "next/head";
 import { useState, useRef, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/router"; // Updated import
 import books from "../../../data/books"; // Adjust the path based on your project structure
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
   const searchParams = useSearchParams();
-  const search = searchParams.get("sampleId");
   const router = useRouter();
   const { id } = params;
 
@@ -268,12 +267,12 @@ const ProductDetails = ({ params }) => {
 
   useEffect(() => {
     if (product) {
-      const initialSampleId = search || product.samples[0].id;
+      const initialSampleId = searchParams.get("sampleId") || product.samples[0].id;
       setMainImage(
         product.samples.find((sample) => sample.id === initialSampleId).image
       );
       setActiveSample(initialSampleId);
-      if (!search) {
+      if (!searchParams.get("sampleId")) {
         router.replace(
           `/product-details/${id}?sampleId=${initialSampleId}`,
           undefined,
@@ -281,7 +280,7 @@ const ProductDetails = ({ params }) => {
         );
       }
     }
-  }, [product, search]);
+  }, [product, searchParams, router, id]);
 
   if (!product) return <div>Product not found</div>;
 
@@ -328,7 +327,7 @@ const ProductDetails = ({ params }) => {
         <meta property="og:title" content={product.title} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={mainImage} />
-        <meta property="og:url" content={`https://wallpaper-web2.vercel.app/product-details/${id}`} />
+        <meta property="og:url" content={`https://your-domain.com/product-details/${id}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={product.title} />
         <meta name="twitter:description" content={product.description} />
