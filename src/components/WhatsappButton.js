@@ -29,7 +29,7 @@ import React from 'react';
 function WhatsAppButton({ phoneNumber, shareUrl, image }) {
     const message = `Check out this product: ${shareUrl}`;
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(message)}&media=${encodeURIComponent(image)}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(message)}&media=${image}`;
 
     return (
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
