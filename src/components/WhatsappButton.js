@@ -1,7 +1,8 @@
 // components/WhatsAppButton.js
 
-function WhatsAppButton({ shareUrl }) {
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this product: ')}${encodeURIComponent(shareUrl)}`;
+function WhatsAppButton({ phoneNumber, shareUrl }) {
+    const whatsappMessage = encodeURIComponent('Check out this product: ');
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappMessage}${encodeURIComponent(shareUrl)}`;
 
     return (
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">

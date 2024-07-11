@@ -364,7 +364,7 @@ const ProductDetails = ({ params }) => {
             Order Via WhatsApp
           </button> */}
 
-<WhatsAppButton shareUrl='this is url whatsapp' />
+<WhatsAppButton shareUrl='this is url whatsapp' phoneNumber='9921079337' />
         </div>
       </div>
       <form className="mt-4 space-y-4 w-[35vw] border px-5 py-5 bg-orange-400">
