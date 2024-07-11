@@ -241,10 +241,12 @@
 
 "use client";
 import Head from "next/head";
+import MetaTags from "@/components/Metatags";
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import books from "../../../data/books"; // Adjust the path based on your project structure
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
+import WhatsAppButton from "@/components/WhatsappButton";
 
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
@@ -322,18 +324,12 @@ const ProductDetails = ({ params }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Head>
-        <title>{product.title}</title>
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={product.title} />
-        <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={mainImage} />
-        <meta property="og:url" content={`https://wallpaper-web2.vercel.app/product-details/${id}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={product.title} />
-        <meta name="twitter:description" content={product.description} />
-        <meta name="twitter:image" content={mainImage} />
-      </Head>
+      <MetaTags
+                title={product.title}
+                description={product.description}
+                image={mainImage}
+                url='this is the url'
+            />
       <div className="lg:flex">
         <div className="lg:w-1/2">
           <div
@@ -361,12 +357,14 @@ const ProductDetails = ({ params }) => {
         <div className="lg:w-1/2 lg:pl-8">
           <h1 className="text-2xl font-bold">{product.title}</h1>
           <p className="text-gray-600">{product.description}</p>
-          <button
+          {/* <button
             className="bg-orange-400 text-white px-4 py-2 rounded-md mt-4"
             onClick={handleOrderViaWhatsApp}
           >
             Order Via WhatsApp
-          </button>
+          </button> */}
+
+<WhatsAppButton shareUrl='this is url whatsapp' />
         </div>
       </div>
       <form className="mt-4 space-y-4 w-[35vw] border px-5 py-5 bg-orange-400">

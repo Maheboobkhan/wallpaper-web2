@@ -16,6 +16,9 @@ export default function RootLayout({ children }) {
   return (
     <CartProvider>
       <html lang="en">
+        <head>
+          
+        </head>
       <body className={inter.className}>
       <Navbar />
       {children}
