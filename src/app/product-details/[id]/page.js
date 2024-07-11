@@ -248,6 +248,7 @@ import books from "../../../data/books"; // Adjust the path based on your projec
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 import WhatsAppButton from "@/components/WhatsappButton";
 
+
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
   const searchParams = useSearchParams();
@@ -364,7 +365,7 @@ const ProductDetails = ({ params }) => {
             Order Via WhatsApp
           </button> */}
 
-<WhatsAppButton shareUrl='this is url whatsapp' phoneNumber='9921079337' />
+<WhatsAppButton shareUrl={`/product-details/${id}?sampleId=${search}`} phoneNumber='9921079337' />
         </div>
       </div>
       <form className="mt-4 space-y-4 w-[35vw] border px-5 py-5 bg-orange-400">
