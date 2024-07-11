@@ -17,14 +17,20 @@ export default function RootLayout({ children }) {
     <CartProvider>
       <html lang="en">
         <head>
-          
+          <meta property="og:title" content="proodd" />
+          <meta property="og:description" content="this is product" />
+          <meta property="og:url" content="wallpaper-web2.vercel.com" />
+          <meta property="og:image" content="https://cdn.pixabay.com/photo/2014/07/24/12/57/boy-400946_1280.jpg" />
+          {/* <meta property="og:image:width" content="1200" /> */}
+          {/* <meta property="og:image:height" content="1129" /> */}
+          <meta property="og:image:alt" content="product" />
         </head>
-      <body className={inter.className}>
-      <Navbar />
-      {children}
-      <Footer/>
-      </body>
-    </html>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
     </CartProvider>
   );
 }

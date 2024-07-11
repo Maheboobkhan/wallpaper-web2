@@ -326,12 +326,12 @@ const ProductDetails = ({ params }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <MetaTags
+      {/* <MetaTags
                 title={product.title}
                 description={product.description}
                 image={mainImage}
                 url={`/product-details/${id}?sampleId=${search}`}
-            />
+            /> */}
       <div className="lg:flex">
         <div className="lg:w-1/2">
           <div
