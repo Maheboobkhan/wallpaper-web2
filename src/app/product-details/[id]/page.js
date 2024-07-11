@@ -310,6 +310,7 @@ const ProductDetails = ({ params }) => {
   };
 
   const handleSampleClick = (sampleId, image) => {
+    console.log('mainimage', image)
     setMainImage(image);
     setActiveSample(sampleId);
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
@@ -329,7 +330,7 @@ const ProductDetails = ({ params }) => {
                 title={product.title}
                 description={product.description}
                 image={mainImage}
-                url='this is the url'
+                url={`/product-details/${id}?sampleId=${search}`}
             />
       <div className="lg:flex">
         <div className="lg:w-1/2">
