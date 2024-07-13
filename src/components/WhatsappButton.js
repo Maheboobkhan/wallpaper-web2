@@ -1,48 +1,25 @@
-// // components/WhatsAppButton.js
-
-// function WhatsAppButton({ phoneNumber, shareUrl, image }) {
-//     const whatsappMessage = encodeURIComponent('Check out this product: ');
-//     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappMessage}${encodeURIComponent(shareUrl)}`;
-
-//     return (
-//         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-//             Order via WhatsApp
-//         </a>
-//     );
-// }
-
-// export default WhatsAppButton;
-
-
-
-
-
-
-
-
-
-
-// components/WhatsAppButton.js
-
 import React from 'react';
+import { WhatsappShareButton, WhatsappIcon } from 'react-share';
 
-function WhatsAppButton({ phoneNumber, shareUrl, image }) {
-    // const message = `Check out this product: ${shareUrl}`;
-    // const encodedimage = encodeURIComponent(image);
-    // console.log('endo', encodedimage);
-
-    // const whatsappUrl = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(message)}&media=${encodedimage}`;
-
-
-    const message = `${image}\nCheck out this product: ${shareUrl}`;
-    
-    const whatsappUrl = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(message)}`;
+const ProductShareButton = ({ product }) => {
+    const productUrl = product.id; // Replace with your actual product URL
+    const productImage = product.image; // URL of the product image
+    const productTitle = product.title; // Title of the product
 
     return (
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            Order via WhatsApp
-        </a>
+        <div>
+            <h2>{productTitle}</h2>
+            <img src={productImage} alt={productTitle} style={{ width: '200px', height: 'auto' }} />
+            <WhatsappShareButton
+                url={productUrl}
+                title={`Check out this product: ${productTitle}`}
+                separator=" "
+                media={productImage}
+            >
+                <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+        </div>
     );
-}
+};
 
-export default WhatsAppButton;
+export default ProductShareButton;

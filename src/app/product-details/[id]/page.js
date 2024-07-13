@@ -247,6 +247,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import books from "../../../data/books"; // Adjust the path based on your project structure
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 import WhatsAppButton from "@/components/WhatsappButton";
+import ProductShareButton from "@/components/WhatsappButton";
 
 
 const ProductDetails = ({ params }) => {
@@ -323,7 +324,12 @@ const ProductDetails = ({ params }) => {
     const whatsappUrl = `https://wa.me/9921079337?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
-
+  const productx = {
+    id: 'https://wallpaper-web2.vercel.app/product-details/nat02?sampleId=nat-01',
+    title: 'Awesome Product',
+    // image: 'https://yourwebsite.com/images/product.jpg',
+    image:'https://eef458be.rocketcdn.me/blog/wp-content/uploads/2022/04/How-an-image-CDN-works-4-major-steps-Source-Imagify.png'
+  };
   return (
     <div className="container mx-auto px-4 py-8">
       {/* <MetaTags
@@ -348,9 +354,8 @@ const ProductDetails = ({ params }) => {
                 key={sample.id}
                 src={sample.image}
                 alt={`Sample ${sample.id}`}
-                className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${
-                  activeSample === sample.id ? "ring-2 ring-indigo-500" : ""
-                }`}
+                className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""
+                  }`}
                 onClick={() => handleSampleClick(sample.id, sample.image)}
               />
             ))}
@@ -366,7 +371,8 @@ const ProductDetails = ({ params }) => {
             Order Via WhatsApp
           </button> */}
 
-<WhatsAppButton shareUrl={`/product-details/${id}?sampleId=${search}`} phoneNumber='9921079337' image={mainImage} />
+          {/* <WhatsAppButton shareUrl={`/product-details/${id}?sampleId=${search}`} phoneNumber='9921079337' image={mainImage} /> */}
+          <ProductShareButton product={productx} />
         </div>
       </div>
       <form className="mt-4 space-y-4 w-[35vw] border px-5 py-5 bg-orange-400">
