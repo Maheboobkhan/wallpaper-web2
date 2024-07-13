@@ -14,7 +14,7 @@ export const metadata = {
     siteName: 'Next.js',
     images: [
       {
-        url: '/samp.jpg',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Jordi_El_Ni%C3%B1o_Polla_2019_by_Glenn_Francis.jpg',
         width: 800,
         height: 600,
       },
