@@ -2,7 +2,7 @@
 const carouselImages = [
     {
       id: 1,
-      image: '/banner.png',
+      image: 'nature/banner.jpg',
       title: 'nature',
       description: 'This is a description for product 1.',
       design: 'nature',
