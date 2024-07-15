@@ -1,25 +1,19 @@
-import React from 'react';
-import { WhatsappShareButton, WhatsappIcon } from 'react-share';
-
-const ProductShareButton = ({ product }) => {
-    const productUrl = product.id; // Replace with your actual product URL
-    const productImage = product.image; // URL of the product image
-    const productTitle = product.title; // Title of the product
-
+// components/WhatsappButton.js
+const WhatsappButton = ({ shareUrl, image }) => {
+    const handleClick = () => {
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this product: ${shareUrl}\n${image}`)}`;
+      window.open(whatsappUrl, '_blank');
+    };
+  
     return (
-        <div>
-            <h2>{productTitle}</h2>
-            <img src={productImage} alt={productTitle} style={{ width: '200px', height: 'auto' }} />
-            <WhatsappShareButton
-                url={productUrl}
-                title={`Check out this product: ${productTitle}`}
-                separator=" "
-                media={productImage}
-            >
-                <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-        </div>
+      <button
+        onClick={handleClick}
+        className="bg-green-500 text-white px-4 py-2 rounded-md mt-4"
+      >
+        Share on WhatsApp
+      </button>
     );
-};
-
-export default ProductShareButton;
+  };
+  
+  export default WhatsappButton;
+  
