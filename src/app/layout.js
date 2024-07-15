@@ -14,7 +14,7 @@ export const metadata = {
     siteName: 'Next.js',
     images: [
       {
-        url: 'public\nature\nature-01.jpg',
+        url: 'https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721060437/nature-02_ctarzc.jpg',
         width: 800,
         height: 600,
       },
