@@ -1,7 +1,7 @@
 const books = {
   nature: [
-    { id: 'nat01', title: "Nature Wallpaper 1", price: "₹1800", description: "Wallpaper sfsdf f f sfsf", image: "/nature/nature-011.jpg", samples: [
-      { id: 'nat-01', image: "/nature/nature-011.jpg" },
+    { id: 'nat01', title: "Nature Wallpaper 1", price: "₹1800", description: "Wallpaper sfsdf f f sfsf", image: "/nature/nature-01.jpg", samples: [
+      { id: 'nat-01', image: "/nature/nature-01.jpg" },
       // { id: 'nat-01', image: "https://pixabay.com/photos/rainwater-leaf-droplets-nature-7858773/" },
       { id: 'nat-02', image: "/nature/nature-03.jpg" },
       { id: 'nat-03', image: "/nature/nature-04.jpg" }

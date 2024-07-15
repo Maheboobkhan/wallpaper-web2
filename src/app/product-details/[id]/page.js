@@ -301,7 +301,7 @@ const ProductDetails = ({ params }) => {
 
   const handleMouseEnter = () => {
     setIsZoomed(true);
-    imageRef.current.style.backgroundSize = "500%";
+    imageRef.current.style.backgroundSize = "200%";
   };
 
   const handleMouseLeave = () => {
