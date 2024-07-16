@@ -521,7 +521,7 @@ const ProductDetails = ({ params }) => {
       <MetaTags
         title={product.title}
         description={product.description}
-        image={preview}
+        image={mainImage}
         url={`/product-details/${id}?sampleId=${activeSample}`}
       />
       {/* <div>{preview}</div> */}
