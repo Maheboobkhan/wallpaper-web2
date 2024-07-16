@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
       <head>
 
         <meta property="og:locale" content="en" />
-        <meta property="og:image" content="public\nature\nature-01.jpg" />
+        <meta property="og:image" content="https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721060437/nature-02_ctarzc.jpg" />
         <meta property="og:url" content="your value" />
         <meta property="og:type" content="your value" />
         <meta property="og:title" content="your value" />
