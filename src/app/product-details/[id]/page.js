@@ -473,7 +473,7 @@ const ProductDetails = ({ params }) => {
   useEffect(() => {
     if (product) {
       console.log('prevv: ',product.imagePreview);
-      setPreview(product.imagePreview);
+      setPreview(product.samples[0].imagePreview);
     }
   }, [product]); // This useEffect runs only when the component mounts or when the 'product' changes
 
