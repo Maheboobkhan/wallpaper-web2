@@ -446,6 +446,7 @@ const ProductDetails = ({ params }) => {
 
   const product = findProductById(id);
   const [mainImage, setMainImage] = useState(product ? product.image : "");
+  const [preview, setPreview] = useState("");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
   );
@@ -492,8 +493,9 @@ const ProductDetails = ({ params }) => {
     imageRef.current.style.backgroundPosition = "center";
   };
 
-  const handleSampleClick = (sampleId, image) => {
-    setMainImage(image);
+  const handleSampleClick = (sampleId, image, imagePreview) => {
+    setMainImage(imagePreview);
+    setPreview(preview)
     setActiveSample(sampleId);
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
       shallow: true,
@@ -511,7 +513,7 @@ const ProductDetails = ({ params }) => {
       <MetaTags
         title={product.title}
         description={product.description}
-        image={mainImage}
+        image={preview}
         url={`/product-details/${id}?sampleId=${activeSample}`}
       />
       <div className="lg:flex">
@@ -532,7 +534,7 @@ const ProductDetails = ({ params }) => {
                 alt={`Sample ${sample.id}`}
                 className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""
                   }`}
-                onClick={() => handleSampleClick(sample.id, sample.image)}
+                onClick={() => handleSampleClick(sample.id, sample.image, sample.imagePreview)}
               />
             ))}
           </div>
@@ -548,7 +550,7 @@ const ProductDetails = ({ params }) => {
           </button> */}
           <ProductShareButton
             shareUrl={`https://wallpaper-web2.vercel.app/product-details/${id}?sampleId=${activeSample}`}
-            image={mainImage}
+            image={preview}
           />
         </div>
       </div>
