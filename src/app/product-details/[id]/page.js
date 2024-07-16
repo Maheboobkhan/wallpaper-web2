@@ -445,7 +445,7 @@ const ProductDetails = ({ params }) => {
   };
 
   const product = findProductById(id);
-  const [preview, setPreview] = useState('');
+  const [preview, setPreview] = useState();
   const [mainImage, setMainImage] = useState(product ? product.image : "");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
@@ -472,8 +472,8 @@ const ProductDetails = ({ params }) => {
 
   useEffect(() => {
     if (product) {
-      console.log('prevv: ',product.imagePreview);
-      setPreview(product.samples[0].imagePreview);
+      setPreview(product.samples[0].image);
+      console.log('prevv: ',preview);
     }
   }, [product]); // This useEffect runs only when the component mounts or when the 'product' changes
 
@@ -502,8 +502,8 @@ const ProductDetails = ({ params }) => {
 
   const handleSampleClick = (sampleId, image, imagePreview) => {
     console.log('pre: ',imagePreview);
-    setMainImage(imagePreview);
-    setPreview(preview)
+    setMainImage(image);
+    setPreview(imagePreview);
     setActiveSample(sampleId);
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
       shallow: true,
@@ -524,6 +524,7 @@ const ProductDetails = ({ params }) => {
         image={preview}
         url={`/product-details/${id}?sampleId=${activeSample}`}
       />
+      {/* <div>{preview}</div> */}
       <div className="lg:flex">
         <div className="lg:w-1/2">
           <div
@@ -543,7 +544,7 @@ const ProductDetails = ({ params }) => {
                 alt={`Sample ${sample.id}`}
                 className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""
                   }`}
-                onClick={() => handleSampleClick(sample.id, sample.image, sample.imagePreview)}
+                onClick={() => handleSampleClick(sample.id, sample.image, sample.image)}
               />
             ))}
           </div>
