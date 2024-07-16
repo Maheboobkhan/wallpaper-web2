@@ -6,7 +6,7 @@ const books = {
       { id: 'nat-02', image: "https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721062342/nature-03_y1nptp.jpg" },
       { id: 'nat-03', image: "/nature/nature-04.jpg" }
     ] },
-    { id: 'nat02', title: "Nature Wallpaper 2", price: "₹1800", image: "/nature/nature-02.jpg", samples: [
+    { id: 'nat02', title: "Nature Wallpaper 2", price: "₹1800", image: "/nature/nature-02.jpg", imagePreview: "https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721060437/nature-02_ctarzc.jpg", samples: [
       { id: 'nat-01', image: "/nature/nature-01.jpg", imagePreview: "https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721060437/nature-02_ctarzc.jpg" },
       { id: 'nat-02', image: "/nature/nature-03.jpg" },
       { id: 'nat-03', image: "/nature/nature-04.jpg" }

@@ -445,8 +445,8 @@ const ProductDetails = ({ params }) => {
   };
 
   const product = findProductById(id);
+  const [preview, setPreview] = useState('');
   const [mainImage, setMainImage] = useState(product ? product.image : "");
-  const [preview, setPreview] = useState("");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
   );
@@ -469,6 +469,13 @@ const ProductDetails = ({ params }) => {
       }
     }
   }, [product, search]);
+
+  useEffect(() => {
+    if (product) {
+      console.log('prevv: ',product.imagePreview);
+      setPreview(product.imagePreview);
+    }
+  }, [product]); // This useEffect runs only when the component mounts or when the 'product' changes
 
   if (!product) return <div>Product not found</div>;
 
@@ -494,6 +501,7 @@ const ProductDetails = ({ params }) => {
   };
 
   const handleSampleClick = (sampleId, image, imagePreview) => {
+    console.log('pre: ',imagePreview);
     setMainImage(imagePreview);
     setPreview(preview)
     setActiveSample(sampleId);
@@ -528,6 +536,7 @@ const ProductDetails = ({ params }) => {
           ></div>
           <div className="flex mt-4 space-x-4">
             {product.samples.map((sample) => (
+              
               <img
                 key={sample.id}
                 src={sample.image}
