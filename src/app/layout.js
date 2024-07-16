@@ -29,7 +29,17 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      {/* <head> */}
+      <head>
+
+        <meta property="og:locale" content="en" />
+        <meta property="og:image" content="https://res.cloudinary.com/ddvtafbjt/image/upload/c_thumb,w_200,g_face/v1721060437/nature-02_ctarzc.jpg" />
+        <meta property="og:url" content="your value" />
+        <meta property="og:type" content="your value" />
+        <meta property="og:title" content="your value" />
+        <meta property="og:description" content="your value" />
+        <meta property="og:logo" content="your value" />
+
+      </head>
 
       <CartProvider>
         {/* </head> */}
