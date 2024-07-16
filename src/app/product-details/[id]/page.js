@@ -445,7 +445,6 @@ const ProductDetails = ({ params }) => {
   };
 
   const product = findProductById(id);
-  const [preview, setPreview] = useState();
   const [mainImage, setMainImage] = useState(product ? product.image : "");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
@@ -470,12 +469,12 @@ const ProductDetails = ({ params }) => {
     }
   }, [product, search]);
 
-  useEffect(() => {
-    if (product) {
-      setPreview(product.samples[0].image);
-      console.log('prevv: ',preview);
-    }
-  }, [product]); // This useEffect runs only when the component mounts or when the 'product' changes
+  // useEffect(() => {
+  //   if (product) {
+  //     setPreview(product.samples[0].image);
+  //     console.log('prevv: ',preview);
+  //   }
+  // }, [product]); // This useEffect runs only when the component mounts or when the 'product' changes
 
   if (!product) return <div>Product not found</div>;
 
@@ -500,10 +499,8 @@ const ProductDetails = ({ params }) => {
     imageRef.current.style.backgroundPosition = "center";
   };
 
-  const handleSampleClick = (sampleId, image, imagePreview) => {
-    console.log('pre: ',imagePreview);
+  const handleSampleClick = (sampleId, image) => {
     setMainImage(image);
-    setPreview(imagePreview);
     setActiveSample(sampleId);
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
       shallow: true,
@@ -544,7 +541,7 @@ const ProductDetails = ({ params }) => {
                 alt={`Sample ${sample.id}`}
                 className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""
                   }`}
-                onClick={() => handleSampleClick(sample.id, sample.image, sample.image)}
+                onClick={() => handleSampleClick(sample.id, sample.image)}
               />
             ))}
           </div>
@@ -560,7 +557,7 @@ const ProductDetails = ({ params }) => {
           </button> */}
           <ProductShareButton
             shareUrl={`https://wallpaper-web2.vercel.app/product-details/${id}?sampleId=${activeSample}`}
-            image={preview}
+            image={mainImage}
           />
         </div>
       </div>

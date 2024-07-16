@@ -34,7 +34,7 @@ const BookCards = ({ bookData }) => {
         // console.log('id '+defaultSampleId);
         return (
           <Link key={item.id} href={`/product-details/${item.id}?sampleId=${defaultSampleId}`}>
-            <div key={item.id} className="border rounded-lg overflow-hidden shadow-lg">
+            <div key={item.id} className="border rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
               <img src={item.image} alt={item.title} className="w-full h-60 object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-bold">{item.title}</h3>
