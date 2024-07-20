@@ -34,20 +34,20 @@ import { createContext, useContext, useState } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [product, setProduct] = useState('');
 
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
+  // const addToCart = (product) => {
+  //   setCart([...cart, product]);
+  // };
 
-  const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.id !== productId));
-  };
+  // const removeFromCart = (productId) => {
+  //   setCart(cart.filter((item) => item.id !== productId));
+  // };
 
-  const clearCart = () => {
-    setCart([]);
-  };
+  // const clearCart = () => {
+  //   setCart([]);
+  // };
 
   const value = {product, setProduct}
 
