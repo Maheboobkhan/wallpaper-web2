@@ -1,6 +1,9 @@
 // components/WhatsappButton.js
+import { useCart } from '../components/CartContext';
 const WhatsappButton = ({ shareUrl, image }) => {
+  const {setProduct} = useCart();
     const handleClick = () => {
+      setProduct(image);
       const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this product: ${shareUrl}\n${image}`)}`;
       window.open(whatsappUrl, '_blank');
     };
@@ -16,4 +19,3 @@ const WhatsappButton = ({ shareUrl, image }) => {
   };
   
   export default WhatsappButton;
-  
