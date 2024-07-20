@@ -49,7 +49,6 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  console.log("pro: ", product);
   const value = {product, setProduct}
 
   return (
