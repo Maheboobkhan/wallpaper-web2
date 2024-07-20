@@ -430,7 +430,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import books from "../../../data/books"; // Adjust the path based on your project structure
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 import ProductShareButton from "@/components/WhatsappButton";
-import MetaTags from "@/components/Metatags";
 
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
