@@ -644,7 +644,7 @@ const ProductDetails = ({ params }) => {
   );
   const imageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [ogImage, setOgImage] = useState(product ? product.samples[0].imagePreview : ""); // State to manage og:image
+  const [ogImage, setOgImage] = useState(product ? product.samples[0].image : ""); // State to manage og:image
 
   useEffect(() => {
     if (product) {
@@ -684,10 +684,10 @@ const ProductDetails = ({ params }) => {
     imageRef.current.style.backgroundPosition = "center";
   };
 
-  const handleSampleClick = (sampleId, image, preview) => {
+  const handleSampleClick = (sampleId, image) => {
     setMainImage(image);
     setActiveSample(sampleId);
-    setOgImage(preview); // Update ogImage when sample is clicked
+    setOgImage(image); // Update ogImage when sample is clicked
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
       shallow: true,
     });
@@ -730,7 +730,7 @@ const ProductDetails = ({ params }) => {
                   src={sample.image}
                   alt={`Sample ${sample.id}`}
                   className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""}`}
-                  onClick={() => handleSampleClick(sample.id, sample.image, sample.imagePreview)}
+                  onClick={() => handleSampleClick(sample.id, sample.image)}
                 />
               ))}
             </div>

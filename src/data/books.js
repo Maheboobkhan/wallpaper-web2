@@ -1,9 +1,9 @@
 const books = {
   nature: [
     { id: 'nat01', title: "Nature Wallpaper 1", price: "₹1800", description: "Wallpaper sfsdf f f sfsf", image: "/nature/nature-01.jpg", samples: [
-      { id: 'nat-01', image: "/nature/nature-01.jpg", imagePreview: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721578214/nature-01_rxruwk.jpg' },
-      { id: 'nat-02', image: "/nature/nature-02.jpg", imagePreview: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721060437/nature-02_ctarzc.jpg' },
-      { id: 'nat-03', image: "/nature/nature-03.jpg", imagePreview: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721578214/nature-03_ih8ceq.jpg' }
+      { id: 'nat-01', image: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721578214/nature-01_rxruwk.jpg' },
+      { id: 'nat-02', image: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721060437/nature-02_ctarzc.jpg' },
+      { id: 'nat-03', image: 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721578214/nature-03_ih8ceq.jpg' }
     ] },
     { id: 'nat02', title: "Nature Wallpaper 2", price: "₹1800", image: "/nature/nature-04.jpg", samples: [
       { id: 'nat-01', image: "/nature/nature-04.jpg" },
