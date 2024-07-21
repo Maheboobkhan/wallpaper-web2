@@ -621,6 +621,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import books from "../../../data/books"; // Adjust the path based on your project structure
 import { useCart } from "../../../components/CartContext"; // Adjust the path based on your project structure
 import ProductShareButton from "@/components/WhatsappButton";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const ProductDetails = ({ params }) => {
   const { addToCart, cart } = useCart();
@@ -635,13 +637,14 @@ const ProductDetails = ({ params }) => {
   };
 
   const product = findProductById(id);
+  console.log('pro: ',product);
   const [mainImage, setMainImage] = useState(product ? product.image : "");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
   );
   const imageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [ogImage, setOgImage] = useState(product ? product.image : ""); // State to manage og:image
+  const [ogImage, setOgImage] = useState(product ? product.samples[0].imagePreview : ""); // State to manage og:image
 
   useEffect(() => {
     if (product) {
@@ -681,10 +684,10 @@ const ProductDetails = ({ params }) => {
     imageRef.current.style.backgroundPosition = "center";
   };
 
-  const handleSampleClick = (sampleId, image) => {
+  const handleSampleClick = (sampleId, image, preview) => {
     setMainImage(image);
     setActiveSample(sampleId);
-    setOgImage(image); // Update ogImage when sample is clicked
+    setOgImage(preview); // Update ogImage when sample is clicked
     router.push(`/product-details/${id}?sampleId=${sampleId}`, undefined, {
       shallow: true,
     });
@@ -708,6 +711,7 @@ const ProductDetails = ({ params }) => {
 
   return (
     <RootLayout ogImage={ogImage}>
+      <Navbar />
       <div className="container mx-auto px-4 py-8">
         <div className="lg:flex">
           <div className="lg:w-1/2">
@@ -726,7 +730,7 @@ const ProductDetails = ({ params }) => {
                   src={sample.image}
                   alt={`Sample ${sample.id}`}
                   className={`w-20 h-20 object-cover rounded-lg cursor-pointer ${activeSample === sample.id ? "ring-2 ring-indigo-500" : ""}`}
-                  onClick={() => handleSampleClick(sample.id, sample.image)}
+                  onClick={() => handleSampleClick(sample.id, sample.image, sample.imagePreview)}
                 />
               ))}
             </div>
@@ -776,7 +780,7 @@ const ProductDetails = ({ params }) => {
             </button>
           </div>
         </form>
-      </div>
+      </div><Footer />
     </RootLayout>
   );
 };

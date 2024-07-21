@@ -44,10 +44,9 @@
 
 
 
-
+'use client';
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from '../components/CartContext';
@@ -57,19 +56,12 @@ const inter = Inter({ subsets: ["latin"] });
 const RootLayout = ({ children, ogImage }) => {
   console.log('o: ',ogImage)
 
-  // useEffect(() => {
-  //   const metaImageTag = document.querySelector('meta[property="og:image"]');
-  //   if (metaImageTag) {
-  //     metaImageTag.setAttribute('content', ogImage);
-  //   }
-  // }, [ogImage]);
-
   return (
     <CartProvider>
       <html lang="en">
         <head>
           <meta property="og:locale" content="en" />
-          <meta property="og:image" content={ogImage} />
+          <meta property="og:image" content={ogImage ? ogImage : 'https://res.cloudinary.com/ddvtafbjt/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721560228/IMG_20240716_132015_kwahcq.jpg'} />
           <meta property="og:url" content="your value" />
           <meta property="og:type" content="your value" />
           <meta property="og:title" content="your value" />
@@ -77,9 +69,9 @@ const RootLayout = ({ children, ogImage }) => {
           <meta property="og:logo" content="your value" />
         </head>
         <body className={inter.className}>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </body>
       </html>
     </CartProvider>
