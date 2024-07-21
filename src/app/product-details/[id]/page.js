@@ -637,14 +637,13 @@ const ProductDetails = ({ params }) => {
   };
 
   const product = findProductById(id);
-  console.log('pro: ',product);
   const [mainImage, setMainImage] = useState(product ? product.image : "");
   const [activeSample, setActiveSample] = useState(
     product ? product.samples[0].id : ""
   );
   const imageRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [ogImage, setOgImage] = useState(product ? product.samples[0].image : ""); // State to manage og:image
+  const [ogImage, setOgImage] = useState(product.samples.find((sample) => sample.id === search).image); // State to manage og:image
 
   useEffect(() => {
     if (product) {
@@ -662,6 +661,7 @@ const ProductDetails = ({ params }) => {
       }
     }
   }, [product, search]);
+
 
   const handleMouseMove = (e) => {
     if (isZoomed) {
@@ -700,9 +700,9 @@ const ProductDetails = ({ params }) => {
   };
 
   const handleOrder = () => {
-    const imageUrl = product.samples.find(sample => sample.id === activeSample)?.image || "";
-    console.log('img: ',imageUrl)
-    setOgImage(imageUrl); // Update ogImage when ordering
+    // const imageUrl = product.samples.find(sample => sample.id === activeSample)?.image || "";
+    // console.log('img: ',imageUrl)
+    // setOgImage(imageUrl); // Update ogImage when ordering
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this product: https://wallpaper-web2.vercel.app/product-details/${id}?sampleId=${activeSample}`)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -718,7 +718,7 @@ const ProductDetails = ({ params }) => {
             <div
               ref={imageRef}
               className="relative bg-cover bg-center"
-              style={{ backgroundImage: `url(${mainImage})`, height: "500px" }}
+              style={{ backgroundImage: `url(${ogImage})`, height: "500px" }}
               onMouseMove={handleMouseMove}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}

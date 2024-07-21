@@ -47,6 +47,7 @@
 'use client';
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from '../components/CartContext';
@@ -54,7 +55,9 @@ import { CartProvider } from '../components/CartContext';
 const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout = ({ children, ogImage }) => {
-  console.log('o: ',ogImage)
+  useEffect(()=>{
+    console.log('o: ',ogImage)
+  },[ogImage])
 
   return (
     <CartProvider>
@@ -70,6 +73,7 @@ const RootLayout = ({ children, ogImage }) => {
         </head>
         <body className={inter.className}>
           {/* <Navbar /> */}
+          {/* {ogImage && ( <img src={ogImage} width={200} /> )} */}
           {children}
           {/* <Footer /> */}
         </body>
